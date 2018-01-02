@@ -49,6 +49,7 @@ export default {
         quantity: this.quantity,
         totalPrice: this.stock.price * this.quantity
       };
+      this.$store.dispatch('buyStock', order);
       console.log(order)
       this.quantity = 0;
     }
