@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           {{ stock.name }}
-          <small>(Price: {{ stock.price }})</small>
+          <small>(Price: {{ stock.price }} {{ totalPrice }})</small>
         </h3>
       </div>
       <div class="panel-body">
@@ -13,16 +13,18 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            v-model="quantity">
+            v-model="quantity"
+            :class="{danger: insufficientFunds}"
+            >
         </div>
         <div class="pull-right">
           <!-- quantity % 1 makes sure quantity isn't decimal -->
           <button
             class="btn btn-success"
             @click="buyStock"
-            :disabled="quantity <= 0 || !(quantity % 1 === 0) || (quantity * stock.price) > funds"
+            :disabled="quantity <= 0 || !(quantity % 1 === 0) || insufficientFunds"
             >
-            Buy
+            {{ insufficientFunds ? 'Insufficient Funds' : 'Buy'}}
           </button>
         </div>
 
@@ -33,6 +35,12 @@
 
 </template>
 
+<style>
+  .danger {
+    border: 1px solid red;
+  }
+</style>
+
 <script>
 export default {
   props: ['stock'],
@@ -42,8 +50,15 @@ export default {
     }
   },
   computed:{
-    funds(){
-      return this.$store.getters.funds;
+    insufficientFunds(){
+      return (this.quantity * this.stock.price) > this.$store.getters.funds;
+    },
+    totalPrice(){
+      if(this.quantity > 0){
+        return '| Total Price: ' + (this.quantity * this.stock.price)
+      } else {
+        return ''
+      }
     }
   },
   methods: {
@@ -60,7 +75,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
