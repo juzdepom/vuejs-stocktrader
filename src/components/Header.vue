@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li>
-              <router-link to="/portfolio">Porfolio</router-link>
+              <router-link to="/portfolio">Portfolio</router-link>
             </li>
             <li>
               <router-link to="/stocks">Stocks</router-link>
@@ -17,7 +17,7 @@
           <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
           <ul class="nav navbar-nav navbar-right">
             <!-- END DAY -->
-            <li><a href="#">End Day</a></li>
+            <li><a style="cursor: pointer" @click="endDay">End Day</a></li>
             <!-- SAVE & LOAD -->
             <li class="dropdown">
               <a href="#"
@@ -41,7 +41,17 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
+
 export default {
+  methods: {
+    // ...mapActions([
+    //   'randomizeStocks',
+    // ]),
+    endDay(){
+      this.$store.dispatch('randomizeStocks')
+    }
+  },
   computed: {
     funds(){
       return this.$store.getters.funds;

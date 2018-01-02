@@ -14,14 +14,13 @@ const mutations = {
     console.log("stockId: "+ stockId + "; quantity: "+quantity+"; stockPrice: "+stockPrice)
     const record = state.myStocks.find(element => element.id == stockId);
     if (record) {
-      record.quantity += quantity
+      record.quantity = parseInt(record.quantity) + parseInt(quantity)
     } else {
       state.myStocks.push({
         id: stockId,
         quantity: quantity
       })
     }
-    console.log("Number of stock types owned: ", state.myStocks.length)
     state.funds -= stockPrice * quantity;
   },
   'SELL_STOCK'(state, { stockId, quantity, stockPrice }) {
