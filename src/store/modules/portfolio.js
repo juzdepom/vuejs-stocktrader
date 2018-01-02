@@ -26,6 +26,7 @@ const mutations = {
   },
   'SELL_STOCK'(state, { stockId, quantity, stockPrice }) {
     const record = state.myStocks.find(element => element.id == stockId);
+    console.log('record: ', record)
     if (record.quantity > quantity) {
       record.quantity -= quantity
     } else {
@@ -49,7 +50,7 @@ const getters = {
       //getters.stock refers to all the stock available
       const record = getters.stocks.find(element => element.id == stock.id);
       return {
-        id: stock.stockId,
+        id: stock.id,
         quantity: stock.quantity,
         name: record.name,
         price: record.price,

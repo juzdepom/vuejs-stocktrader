@@ -1,6 +1,6 @@
 <template>
   <div class="col-sm-6">
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">
           {{ stock.name }}
@@ -35,6 +35,7 @@
 
 <script>
 export default {
+  //comes from Portfolio.vue which gets stock from stockPortfolio in the vuex store
   props: ['stock'],
   data(){
     return {
@@ -48,7 +49,8 @@ export default {
         stockPrice: this.stock.price,
         quantity: this.quantity,
       };
-      this.$store.dispatch('sellStock', order)
+      this.$store.dispatch('sellStock', order);
+      this.quantity = 0;
     }
   }
 }
