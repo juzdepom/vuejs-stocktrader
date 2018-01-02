@@ -1,30 +1,36 @@
 const state = {
   funds: 10000,
-  stocks: [],
+  myStocks: [],
+  // id: stock.stockId,
+  // quantity: stock.quantity,
+  // name: record.name,
+  // price: record.price,
 };
 
 const mutations = {
   //the second param is destructured from an Order object from Stock.js component
   'BUY_STOCK'(state, { stockId, quantity, stockPrice }) {
     //find() loops through array an finds the appropriate element
-    const record = state.stocks.find(element => element.id == stockId);
+    console.log("stockId: "+ stockId + "; quantity: "+quantity+"; stockPrice: "+stockPrice)
+    const record = state.myStocks.find(element => element.id == stockId);
     if (record) {
       record.quantity += quantity
     } else {
-      state.stocks.push({
+      state.myStocks.push({
         id: stockId,
         quantity: quantity
       })
     }
+    console.log("Number of stock types owned: ", state.myStocks.length)
     state.funds -= stockPrice * quantity;
   },
   'SELL_STOCK'(state, { stockId, quantity, stockPrice }) {
-    const record = state.stocks.find(element => element.id == stockId);
+    const record = state.myStocks.find(element => element.id == stockId);
     if (record.quantity > quantity) {
       record.quantity -= quantity
     } else {
       //the 1 means only remove this item.
-      state.stocks.splice(state.stocks.indexOf(record), 1);
+      state.myStocks.splice(state.myStocks.indexOf(record), 1);
     }
     state.funds += stockPrice * quantity;
   }
@@ -38,10 +44,10 @@ const actions = {
 
 const getters = {
   stockPortfolio: (state, getters) => {
-    return state.stocks.map(stock => {
+    return state.myStocks.map(stock => {
       //this is the getter that is in the stocks module
       //getters.stock refers to all the stock available
-      const record = getters.stock.find(element => element.id == stock.id);
+      const record = getters.stocks.find(element => element.id == stock.id);
       return {
         id: stock.stockId,
         quantity: stock.quantity,
