@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Header Component</h1>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -27,11 +26,8 @@
                 Save &amp; Load <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><a href="#">Save Data</a></li>
+                <li><a href="#">Load Data</a></li>
               </ul>
             </li>
           </ul>
