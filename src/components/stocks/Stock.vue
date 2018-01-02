@@ -20,7 +20,7 @@
           <button
             class="btn btn-success"
             @click="buyStock"
-            :disabled="quantity <= 0 || !(quantity % 1 === 0)"
+            :disabled="quantity <= 0 || !(quantity % 1 === 0) || (quantity * stock.price) > funds"
             >
             Buy
           </button>
@@ -39,6 +39,11 @@ export default {
   data(){
     return {
       quantity: 0,
+    }
+  },
+  computed:{
+    funds(){
+      return this.$store.getters.funds;
     }
   },
   methods: {

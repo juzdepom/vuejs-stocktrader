@@ -20,7 +20,7 @@
           <button
             class="btn btn-success"
             @click="sellStock"
-            :disabled="quantity <= 0 || !(quantity % 1 === 0)"
+            :disabled="quantity <= 0 || !(quantity % 1 === 0) || quantity > stock.quantity"
             >
             Sell
           </button>

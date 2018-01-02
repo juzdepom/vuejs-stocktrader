@@ -2,10 +2,10 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <h1>Trade or View Your Portfolio</h1>
-      <p>You may Save &amp; Load your Data.</p>
-      <p>Click on 'End Day' to begin a new day!</p>
+      <h6>You may Save &amp; Load your Data.</h6>
+      <h6>Click on 'End Day' to begin a new day!</h6>
       <hr>
-      <h3>Your Funds: $</h3>
+      <p>Your Funds: {{ funds }}</p>
     </div>
   </div>
 
@@ -13,6 +13,11 @@
 
 <script>
 export default {
+  computed: {
+    funds(){
+      return '$' + this.$store.getters.funds;
+    }
+  }
 }
 </script>
 

@@ -14,8 +14,11 @@
               <router-link to="/stocks">Stocks</router-link>
             </li>
           </ul>
+          <strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
           <ul class="nav navbar-nav navbar-right">
+            <!-- END DAY -->
             <li><a href="#">End Day</a></li>
+            <!-- SAVE & LOAD -->
             <li class="dropdown">
               <a href="#"
                 class="dropdown-toggle"
@@ -39,6 +42,11 @@
 
 <script>
 export default {
+  computed: {
+    funds(){
+      return this.$store.getters.funds;
+    }
+  }
 }
 </script>
 
