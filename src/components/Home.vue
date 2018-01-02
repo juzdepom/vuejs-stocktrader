@@ -5,7 +5,7 @@
       <h6>You may Save &amp; Load your Data.</h6>
       <h6>Click on 'End Day' to begin a new day!</h6>
       <hr>
-      <p>Your Funds: {{ funds }}</p>
+      <p>Your Funds: {{ funds | currency }}</p>
     </div>
   </div>
 
@@ -15,7 +15,7 @@
 export default {
   computed: {
     funds(){
-      return '$' + this.$store.getters.funds;
+      return this.$store.getters.funds;
     }
   }
 }

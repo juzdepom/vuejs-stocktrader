@@ -58,8 +58,8 @@ const getters = {
     })
   },
   funds: (state) => {
-    return state.funds;
-  }
+    return state.funds
+  },
 }
 
 export default {

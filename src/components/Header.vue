@@ -14,7 +14,7 @@
               <router-link to="/stocks">Stocks</router-link>
             </li>
           </ul>
-          <strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
+          <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
           <ul class="nav navbar-nav navbar-right">
             <!-- END DAY -->
             <li><a href="#">End Day</a></li>

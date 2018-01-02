@@ -35,7 +35,7 @@
 
 </template>
 
-<style>
+<style scoped>
   .danger {
     border: 1px solid red;
   }
