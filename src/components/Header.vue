@@ -19,7 +19,7 @@
             <!-- END DAY -->
             <li><a style="cursor: pointer" @click="endDay">End Day</a></li>
             <!-- SAVE & LOAD -->
-            <li class="dropdown">
+            <li class="dropdown" :class="{open: isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen">
               <a href="#"
                 class="dropdown-toggle"
                 data-toggle="dropdown"
@@ -44,6 +44,11 @@
 // import { mapActions } from 'vuex'
 
 export default {
+  data(){
+    return {
+      isDropdownOpen: false,
+    }
+  },
   methods: {
     // ...mapActions([
     //   'randomizeStocks',
