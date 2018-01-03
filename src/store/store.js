@@ -2,14 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import stocks from './modules/stocks';
 import portfolio from './modules/portfolio';
-import { loadData } from './actions';
+import * as actions from './actions';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-  actions: {
-    loadData,
-  },
+  actions,
   modules:{
     stocks,
     portfolio,
