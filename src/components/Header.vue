@@ -57,7 +57,13 @@ export default {
       this.$store.dispatch('randomizeStocks')
     },
     saveData(){
-
+      const data = {
+        funds: this.$store.getters.funds,
+        stockPortfolio: this.$store.getters.stockPortfolio,
+        stocks: this.$store.getters.stocks,
+      };
+      //data.json is the node we want to create.
+      this.$http.put('data.json', data)
     },
     loadData(){
 
