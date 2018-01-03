@@ -30,7 +30,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="#" @click="saveData">Save Data</a></li>
-                <li><a href="#" @click="loadData">Load Data</a></li>
+                <li><a href="#" @click="fetchData">Load Data</a></li>
               </ul>
             </li>
           </ul>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   data(){
@@ -50,11 +50,12 @@ export default {
     }
   },
   methods: {
-    // ...mapActions([
-    //   'randomizeStocks',
-    // ]),
+    ...mapActions([
+      'randomizeStocks',
+      'loadData',
+    ]),
     endDay(){
-      this.$store.dispatch('randomizeStocks')
+      this.randomizeStocks();
     },
     saveData(){
       const data = {
@@ -65,8 +66,8 @@ export default {
       //data.json is the node we want to create.
       this.$http.put('data.json', data)
     },
-    loadData(){
-
+    fetchData(){
+      this.loadData();
     },
   },
   computed: {
